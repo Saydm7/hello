@@ -1,0 +1,33 @@
+#%RAML 1.0
+version: v1
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/edf30418-7f54-4cbc-8c15-3f4d247e25c6/ # 
+title: Project1
+
+/project1: #optional resource
+  get: # http method declreation 
+    responses: # declare a responce
+      200: # status code
+        body: # declare a content of responce 
+          application/json: # media type
+            type: | # structural responces (schema or type)
+
+              {
+                "title": "hello world responce",
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+
+                  }
+                }
+              }
+            example: | # how a reponcse look like
+
+              {
+              "message": "Hello world"
+              }
+              
+
+          
+
+       
