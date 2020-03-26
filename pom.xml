@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
@@ -25,13 +26,34 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-				<sharedLibraries>
-                        <sharedLibrary>
-                            <groupId>com.mycompany</groupId>
-                            <artifactId>mysql-connector-java-8.0.18</artifactId>
-                        </sharedLibrary>
-                    </sharedLibraries>
-                </configuration>
+		<cloudHubDeployment>
+
+                   <uri>https://anypoint.mulesoft.com</uri>
+
+                   <muleVersion>${mule.version}</muleVersion>
+
+    <!-- Deploy User Parameter -->
+
+                   <username>${anypoint.username}</username>
+
+                   <password>${anypoint.password}</password>
+
+    <!-- Environment Parameter -->
+
+                   <environment>${cloudhub.environment}</environment>
+
+                   <applicationName>${cloudhub.app}</applicationName>
+
+                   <businessGroup>${cloudhub.bg}</businessGroup>
+
+                   <workerType>${cloudhub.worker}</workerType>
+
+		   <objectStoreV2>true</objectStoreV2>		  
+
+		   <workers>1</workers>                   			
+
+                  </cloudHubDeployment>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -43,31 +65,13 @@
             <version>1.5.11</version>
             <classifier>mule-plugin</classifier>
         </dependency>
-
         <dependency>
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-sockets-connector</artifactId>
             <version>1.1.5</version>
             <classifier>mule-plugin</classifier>
         </dependency>
-		<dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-apikit-module</artifactId>
-            <version>1.3.7</version>
-            <classifier>mule-plugin</classifier>
-        </dependency>
-    	<dependency>
-            <groupId>org.mule.connectors</groupId>
-            <artifactId>mule-db-connector</artifactId>
-            <version>1.5.5</version>
-            <classifier>mule-plugin</classifier>
-        </dependency>
-    	<dependency>
-            <groupId>com.mycompany</groupId>
-            <artifactId>mysql-connector-java-8.0.18</artifactId>
-            <version>0.1</version>
-        </dependency>
-    </dependencies>
+	</dependencies>
 
 	<repositories>
           <repository>
